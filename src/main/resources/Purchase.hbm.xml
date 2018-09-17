@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+ <hibernate-mapping>
+  <class name="com.ideas2it.hospitalmanagement.model.Purchase" table="purchase">
+    <id name="id" column = "ID" type="int">
+     <generator class="increment"/>   
+    </id>
+    <property name="dealerName" column="DEALER_NAME" type="string"></property>
+    <property name="dateOfPurchase" column="DATE_OF_PURCHASE" type="date"></property>
+    <property name="active" column="ACTIVE" type="boolean"></property>
+    <bag name="listOfItems" cascade="all" fetch="join" lazy="false">
+        <key column="PURCHASE_ID"/>
+        <one-to-many class="com.ideas2it.hospitalmanagement.model.PurchaseDetails"/>
+    </bag>
+  </class>
+ </hibernate-mapping>
+
+
